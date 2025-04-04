@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+    .product-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 30px;
+        background-color: #f8f8f8;
+    }
+
+    .product-image {
+        width: 500px;
+        height: 500px;
+        object-fit: cover;
+        border: 1px solid #ddd;
+        background-color: white;
+        padding: 10px;
+    }
+
+    .product-details {
+        margin-left: 30px;
+        max-width: 500px;
+    }
+
+    .product-details h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .product-details p {
+        font-size: 16px;
+        margin: 8px 0;
+    }
+
+    .product-price {
+        color: #b12704;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .product-category {
+        color: #555;
+        font-size: 14px;
+        background-color: #eef0f1;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+</style>
+
+<div class="product-container">
+    <img class="product-image" src="{{pro.image.url}}" alt="Image not found">
+
+    <div class="product-details">
+        <h1>{{pro.title}}</h1>
+        <p><b>Description:</b> {{pro.desc}}</p>
+        <p class="product-price">Price: ₹{{pro.price}}</p>
+        <p><b>Category:</b> <span class="product-category">{{pro.category}}</span></p>
+        <a href="{% url 'addcart' pro.id %}"> Add Cart </a>
+        <a href="{% url 'buynow' pro.id %}">buynow</a>
+    </div>
+</div>
+
+{% endblock content %}
